@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1029826978348-qm5m3hpuddn9s4ottahndolk34q93qjd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1029826978348-qm5m3hpuddn9s4ottahndolk34q93qjd</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDQIwsD-9n8TTnvppr_iqPQVrbpGqV9EL8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1029826978348</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.cahuroca.push-app</string>
+	<key>PROJECT_ID</key>
+	<string>cloudmessage-5109a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cloudmessage-5109a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1029826978348:ios:687afa20088e4cedf72789</string>
+	<key>DATABASE_URL</key>
+	<string>https://cloudmessage-5109a.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1029826978348",
+    "firebase_url": "https://cloudmessage-5109a.firebaseio.com",
+    "project_id": "cloudmessage-5109a",
+    "storage_bucket": "cloudmessage-5109a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029826978348:android:25151c258747ba21f72789",
+        "android_client_info": {
+          "package_name": "com.cahuroca.push_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029826978348-b75tsi0rkhroml7qjapqf10cdm6ukhp2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO7csV4yYNunwLuRx3zyDbA1MMNoW1wsw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029826978348-b75tsi0rkhroml7qjapqf10cdm6ukhp2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029826978348:android:68d75f87dd962336",
+        "android_client_info": {
+          "package_name": "com.example.azaa0.cloudmessaging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029826978348-b75tsi0rkhroml7qjapqf10cdm6ukhp2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO7csV4yYNunwLuRx3zyDbA1MMNoW1wsw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029826978348-b75tsi0rkhroml7qjapqf10cdm6ukhp2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
