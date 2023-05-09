@@ -10,6 +10,15 @@ abstract class NotificationsEvent extends Equatable {
 class NotificationStatusChanged extends NotificationsEvent {
   final AuthorizationStatus status;
 
-  NotificationStatusChanged(this.status);
+  const NotificationStatusChanged(this.status);
   
+}
+
+// TODO: notification received event : PushMessage, 
+
+
+class NotificationReceived extends NotificationsEvent {
+  final PushMessage notification;
+
+  const NotificationReceived(this.notification);
 }

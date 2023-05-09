@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_push/presentation/blocs/notification_bloc/notifications_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,8 +11,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: context.select(
-          (NotificationsBloc bloc) =>
-              Text('${bloc.state.status}'),
+          (NotificationsBloc bloc) => Text('${bloc.state.status}'),
         ),
         actions: [
           IconButton(
@@ -32,11 +32,23 @@ class _HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final notifications =
+        context.watch<NotificationsBloc>().state.notifications;
     return ListView.builder(
-      itemCount: 0,
+      itemCount: notifications.length,
       itemBuilder: (context, index) {
+        final notification = notifications[index];
         return ListTile(
-          title: Text('Item $index'),
+          title: Text(notification.title),
+          subtitle: Text(
+            notification.body,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+          leading: notification.imageUrl != null
+              ? Image.network(notification.imageUrl!)
+              : null,
+          onTap: () => context.push('/detail/${notification.messageId}'),
         );
       },
     );

@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_push/domain/entities/push_message.dart';
 
 import '../../../firebase_options.dart';
 
@@ -21,11 +24,10 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
 
   NotificationsBloc() : super(const NotificationsState()) {
     // on<NotificationsEvent>((event, emit) {
-    //   // TODO: implement event handler
+
     // });
-    on<NotificationStatusChanged>((event, emit) {
-      _notificationStatusChanged(event, emit);
-    });
+    on<NotificationStatusChanged>(_notificationStatusChanged);
+    on<NotificationReceived>(_onPushMessageReceived);
 
     // verify permission
     _initialStatusCheck();
@@ -40,10 +42,26 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
   }
 
   void _notificationStatusChanged(
-      NotificationStatusChanged event, Emitter<NotificationsState> emit) {
-    emit(state.copyWith(status: event.status));
+    NotificationStatusChanged event,
+    Emitter<NotificationsState> emit,
+  ) {
+    emit(
+      state.copyWith(status: event.status),
+    );
 
     _getFCMToken();
+  }
+
+  void _onPushMessageReceived(
+    NotificationReceived event,
+    Emitter<NotificationsState> emit,
+  ) {
+    emit(state.copyWith(
+      notifications: [
+        event.notification,
+        ...state.notifications,
+      ],
+    ));
   }
 
   void _initialStatusCheck() async {
@@ -60,17 +78,27 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
     print('FCM Token: $token');
   }
 
-  void _handleRemoteMessage(RemoteMessage message) {
-    print('Got a message whilst in the foreground!');
-    print('Message data: ${message.data}');
-
+  void handleRemoteMessage(RemoteMessage message) {
     if (message.notification == null) return;
 
-    print('Message also contained a notification: ${message.notification}');
+    final notification = PushMessage(
+      messageId:
+          message.messageId?.replaceAll(':', '').replaceAll('%', '') ?? '',
+      title: message.notification!.title ?? '',
+      body: message.notification!.body ?? '',
+      sentDate: message.sentTime ?? DateTime.now(),
+      data: message.data,
+      imageUrl: Platform.isAndroid
+          ? message.notification!.android?.imageUrl
+          : message.notification!.apple?.imageUrl,
+    );
+    // TODO: Add new event
+    print(notification);
+    add(NotificationReceived(notification));
   }
 
   void _onForegroundMessage() {
-    FirebaseMessaging.onMessage.listen(_handleRemoteMessage);
+    FirebaseMessaging.onMessage.listen(handleRemoteMessage);
   }
 
   void requestPermission() async {
@@ -84,5 +112,17 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
       sound: true,
     );
     add(NotificationStatusChanged(settings.authorizationStatus));
+  }
+
+  PushMessage? getMessageById(String id) {
+    final bool exists = state.notifications.any(
+      (element) => element.messageId == id,
+    );
+
+    if (!exists) return null;
+
+    return state.notifications.firstWhere(
+      (element) => element.messageId == id,
+    );
   }
 }
