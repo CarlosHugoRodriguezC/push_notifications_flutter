@@ -49,23 +49,5 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCO7csV4yYNunwLuRx3zyDbA1MMNoW1wsw',
-    appId: '1:1029826978348:android:25151c258747ba21f72789',
-    messagingSenderId: '1029826978348',
-    projectId: 'cloudmessage-5109a',
-    databaseURL: 'https://cloudmessage-5109a.firebaseio.com',
-    storageBucket: 'cloudmessage-5109a.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDQIwsD-9n8TTnvppr_iqPQVrbpGqV9EL8',
-    appId: '1:1029826978348:ios:687afa20088e4cedf72789',
-    messagingSenderId: '1029826978348',
-    projectId: 'cloudmessage-5109a',
-    databaseURL: 'https://cloudmessage-5109a.firebaseio.com',
-    storageBucket: 'cloudmessage-5109a.appspot.com',
-    iosClientId: '1029826978348-qm5m3hpuddn9s4ottahndolk34q93qjd.apps.googleusercontent.com',
-    iosBundleId: 'com.cahuroca.push-app',
-  );
+  
 }
